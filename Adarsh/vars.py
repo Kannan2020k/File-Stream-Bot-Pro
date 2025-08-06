@@ -30,14 +30,13 @@ class Var(object):
     
     else:
         ON_HEROKU = False
-    FQDN = str(getenv('FQDN', BIND_ADRESS)) if not ON_HEROKU or getenv('FQDN') else APP_NAME+'.herokuapp.com''
-    HAS_SSL=bool(getenv('HAS_SSL', True))
+    FQDN = str(getenv('FQDN', 'starstreamer.hop.sh')) if not ON_HEROKU or getenv('FQDN', '16.171.19.76:8080') else APP_NAME+'.herokuapp.com'    HAS_SSL=bool(getenv('HAS_SSL', True))
     if HAS_SSL:
         URL = "https://{}/".format(FQDN)
     else:
         URL = "http://{}/".format(FQDN)
     DATABASE_URL = str(getenv('DATABASE_URL', 'mongodb+srv://Karnan2k:karnan2k@cluster0.guq8k77.mongodb.net/?retryWrites=true&w=majority'))
-    UPDATES_CHANNEL = str(getenv('UPDATES_CHANNEL', 'Star_Bots_Tamil'))
+    UPDATES_CHANNEL = str(getenv('UPDATES_CHANNEL', 'MainChannal2k'))
     BANNED_CHANNELS = list(set(int(x) for x in str(getenv("BANNED_CHANNELS", "-1001850979293")).split())) 
     LOG_CHANNEL = int(os.environ.get("LOG_CHANNEL", "-1001850979293"))
     BROADCAST_AS_COPY = bool(os.environ.get("BROADCAST_AS_COPY", True))
