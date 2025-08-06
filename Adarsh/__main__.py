@@ -60,7 +60,7 @@ async def start_services():
     app = web.AppRunner(await web_server())
     await app.setup()
     bind_address = "0.0.0.0" if Var.ON_HEROKU else Var.BIND_ADRESS
-    await web.TCPSite(app, '0.0.0.0', 8080).start()
+   await web.TCPSite(app, bind_address, Var.PORT).start()
     print('✅ Done')
     print('\n')
     print('Wait Pannunga')
