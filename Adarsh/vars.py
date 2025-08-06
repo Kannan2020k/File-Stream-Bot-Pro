@@ -30,8 +30,8 @@ class Var(object):
     
     else:
         ON_HEROKU = False
-    FQDN = str(getenv('FQDN', 'starstreamer.hop.sh')) if not ON_HEROKU or getenv('FQDN', '16.171.19.76:8080') else APP_NAME+'.herokuapp.com'    HAS_SSL=bool(getenv('HAS_SSL', True))
-    if HAS_SSL:
+   FQDN = str(getenv('FQDN', BIND_ADRESS)) if not ON_HEROKU or getenv('FQDN') else APP_NAME+'.herokuapp.com'
+   if HAS_SSL:
         URL = "https://{}/".format(FQDN)
     else:
         URL = "http://{}/".format(FQDN)
